@@ -5,9 +5,11 @@
  */
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class Client {
 
@@ -25,7 +27,11 @@ public class Client {
                 }
             }
             System.out.println(inputLine);
-        } catch (Exception e) {
+        } catch (UnknownHostException e) {
+            System.err.println("Unknown Host");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Could not get I/O for connection to host: 127.0.0.1");
             e.printStackTrace();
         }
     }
